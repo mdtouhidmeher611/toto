@@ -21,28 +21,19 @@ int main() {
             valid[i] = (a[i-1] + a[i+1] > a[i]);
         }
         
-        long long ans = n; // All length 1
-        
-        // Find segments of consecutive valid positions
+        long long ans = n;
         int i = 1;
         while (i < n - 1) {
             if (!valid[i]) {
                 i++;
                 continue;
             }
-            
-            // Start of consecutive valid segment
             int j = i;
             while (j < n - 1 && valid[j]) {
                 j++;
             }
-            
-            int len = j - i; // Length of consecutive valid positions
-            
-            // For k consecutive valids, we can form subarrays of length 2k+1
-            // Number of such subarrays starting at different positions
-            ans += len;
-            
+            int len = j - i;
+            ans += len;  
             i = j;
         }
         
